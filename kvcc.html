@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KV CRINGE CLUB</title>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap');
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#090000;
+      color:#ffd95e;
+      overflow-x:hidden;
+    }
+
+    /* SCROLLBAR */
+
+    ::-webkit-scrollbar{
+      width:10px;
+    }
+
+    ::-webkit-scrollbar-track{
+      background:#140000;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:linear-gradient(#ff0000,#ffd95e);
+      border-radius:20px;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:15px 6%;
+      backdrop-filter:blur(10px);
+      background:rgba(30,0,0,0.7);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      z-index:1000;
+      border-bottom:1px solid rgba(255,217,94,0.2);
+    }
+
+    /* LOGO */
+
+    .logo-container{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo-img{
+      width:55px;
+      height:55px;
+      object-fit:cover;
+      border-radius:50%;
+      border:3px solid #ffd95e;
+      box-shadow:0 0 20px rgba(255,0,0,0.6);
+      background:#111;
+    }
+
+    .logo-text{
+      font-size:2rem;
+      font-weight:900;
+      background:linear-gradient(90deg,#ff0000,#ffd95e);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow:0 0 15px rgba(255,0,0,0.5);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:25px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#ffd95e;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#ff2a2a;
+    }
+
+    /* HERO */
+
+    .hero{
+      height:100vh;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .slides{
+      width:100%;
+      height:100%;
+      position:relative;
+    }
+
+    .slide{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background-size:cover;
+      background-position:center;
+      opacity:0;
+      transition:1s;
+    }
+
+    .slide.active{
+      opacity:1;
+    }
+
+    .overlay{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.6);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .overlay h1{
+      font-size:5rem;
+      font-weight:900;
+      color:#ffd95e;
+      text-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 40px #ff0000;
+    }
+
+    .overlay p{
+      margin-top:15px;
+      font-size:1.2rem;
+      max-width:700px;
+      color:#fff3bf;
+    }
+
+    .hero-btn{
+      margin-top:30px;
+      padding:14px 35px;
+      border:none;
+      border-radius:50px;
+      background:linear-gradient(90deg,#ff0000,#ffd95e);
+      color:#1a0000;
+      font-size:1rem;
+      font-weight:800;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .hero-btn:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 30px rgba(255,0,0,0.8);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      font-size:3rem;
+      margin-bottom:40px;
+      text-align:center;
+      font-weight:900;
+      background:linear-gradient(90deg,#ff0000,#ffd95e);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow:0 0 20px rgba(255,0,0,0.4);
+    }
+
+    /* CARDS */
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#180000;
+      border:1px solid rgba(255,217,94,0.15);
+      padding:25px;
+      border-radius:25px;
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      width:220px;
+      height:220px;
+      background:rgba(255,0,0,0.15);
+      border-radius:50%;
+      top:-100px;
+      right:-100px;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 30px rgba(255,0,0,0.5);
+    }
+
+    .card h2{
+      margin-bottom:15px;
+      font-size:1.6rem;
+      color:#ffd95e;
+    }
+
+    .card p{
+      color:#ffe9a8;
+      line-height:1.7;
+    }
+
+    /* MEMBERS */
+
+    .members{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .member-card{
+      background:#160000;
+      border-radius:25px;
+      padding:25px;
+      text-align:center;
+      transition:0.4s;
+      border:1px solid rgba(255,217,94,0.15);
+    }
+
+    .member-card:hover{
+      transform:scale(1.05);
+      box-shadow:0 0 30px rgba(255,0,0,0.5);
+    }
+
+    .member-card img{
+      width:110px;
+      height:110px;
+      object-fit:cover;
+      border-radius:50%;
+      border:4px solid #ffd95e;
+      margin-bottom:15px;
+    }
+
+    .member-card h3{
+      font-size:1.2rem;
+      font-weight:900;
+      color:#ffd95e;
+    }
+
+    .member-card span{
+      color:#ff5e5e;
+      font-size:0.95rem;
+    }
+
+    /* STATS */
+
+    .stats{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:30px;
+      margin-top:40px;
+    }
+
+    .stat-box{
+      background:#180000;
+      padding:30px;
+      border-radius:25px;
+      min-width:220px;
+      text-align:center;
+      border:1px solid rgba(255,217,94,0.15);
+    }
+
+    .stat-box h1{
+      font-size:3rem;
+      color:#ff2a2a;
+    }
+
+    .stat-box p{
+      color:#ffd95e;
+    }
+
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      padding:40px;
+      background:#0a0000;
+      border-top:1px solid rgba(255,217,94,0.1);
+    }
+
+    footer h2{
+      font-size:2rem;
+      color:#ffd95e;
+    }
+
+    footer p{
+      color:#ffe7a0;
+      margin-top:10px;
+    }
+
+    /* =========================
+       RESPONSIVE DESIGN
+       ========================= */
+
+    @media screen and (max-width:1024px){
+
+      nav{
+        padding:14px 5%;
+      }
+
+      .overlay h1{
+        font-size:4rem;
+      }
+
+      .overlay p{
+        font-size:1rem;
+        max-width:600px;
+      }
+
+      .section-title{
+        font-size:2.5rem;
+      }
+
+      .members{
+        grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      }
+    }
+
+    @media screen and (max-width:768px){
+
+      nav{
+        padding:12px 5%;
+        flex-direction:column;
+        gap:15px;
+      }
+
+      .logo-container{
+        justify-content:center;
+      }
+
+      .logo-text{
+        font-size:1.4rem;
+      }
+
+      .logo-img{
+        width:45px;
+        height:45px;
+      }
+
+      .nav-links{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+      }
+
+      .nav-links a{
+        font-size:0.9rem;
+      }
+
+      .hero{
+        height:90vh;
+      }
+
+      .overlay h1{
+        font-size:3rem;
+        line-height:1.1;
+      }
+
+      .overlay p{
+        font-size:0.95rem;
+        max-width:90%;
+      }
+
+      .hero-btn{
+        padding:12px 28px;
+        font-size:0.9rem;
+      }
+
+      section{
+        padding:80px 6%;
+      }
+
+      .section-title{
+        font-size:2rem;
+      }
+
+      .card-grid{
+        grid-template-columns:1fr;
+      }
+
+      .members{
+        grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      }
+
+      .stats{
+        gap:20px;
+      }
+
+      .stat-box{
+        min-width:180px;
+        padding:25px;
+      }
+    }
+
+    @media screen and (max-width:480px){
+
+      nav{
+        padding:10px 4%;
+      }
+
+      .logo-container{
+        gap:10px;
+      }
+
+      .logo-text{
+        font-size:1rem;
+      }
+
+      .logo-img{
+        width:40px;
+        height:40px;
+      }
+
+      .nav-links{
+        gap:10px;
+      }
+
+      .nav-links a{
+        font-size:0.75rem;
+      }
+
+      .hero{
+        height:85vh;
+      }
+
+      .overlay h1{
+        font-size:2.2rem;
+      }
+
+      .overlay p{
+        font-size:0.85rem;
+        line-height:1.5;
+      }
+
+      .hero-btn{
+        padding:10px 24px;
+        font-size:0.8rem;
+      }
+
+      section{
+        padding:70px 5%;
+      }
+
+      .section-title{
+        font-size:1.7rem;
+      }
+
+      .card{
+        padding:20px;
+        border-radius:20px;
+      }
+
+      .card h2{
+        font-size:1.3rem;
+      }
+
+      .card p{
+        font-size:0.9rem;
+      }
+
+      .member-card{
+        padding:20px;
+      }
+
+      .member-card img{
+        width:90px;
+        height:90px;
+      }
+
+      .member-card h3{
+        font-size:1rem;
+      }
+
+      .member-card span{
+        font-size:0.8rem;
+      }
+
+      .stats{
+        flex-direction:column;
+        align-items:center;
+      }
+
+      .stat-box{
+        width:100%;
+        max-width:250px;
+      }
+
+      footer h2{
+        font-size:1.4rem;
+      }
+
+      footer p{
+        font-size:0.85rem;
+      }
+    }
+
+    @media screen and (max-width:320px){
+
+      .overlay h1{
+        font-size:1.8rem;
+      }
+
+      .overlay p{
+        font-size:0.75rem;
+      }
+
+      .hero-btn{
+        font-size:0.75rem;
+        padding:9px 18px;
+      }
+
+      .section-title{
+        font-size:1.4rem;
+      }
+
+      .logo-text{
+        font-size:0.85rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo-container">
+
+      <!-- ADD YOUR LOGO IMAGE HERE -->
+      <img src="kvcc.jpeg" class="logo-img">
+
+      <div class="logo-text">
+        KV CRINGE CLUB
+      </div>
+
+    </div>
+
+    <div class="nav-links">
+      <a href="#confessions">Confessions</a>
+      <a href="#gossips">Gossips</a>
+      <a href="#rage">Ragebaits</a>
+      <a href="#members">Members</a>
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <div class="hero">
+
+    <div class="slides">
+
+      <div class="slide active"
+      style="background-image:url('kvcc2 (2).jpg');"></div>
+s</div>
+
+   
+
+  </div>
+
+  <!-- STATS -->
+
+  <section>
+
+    <h1 class="section-title">THE LORE 📢</h1>
+
+    <div class="stats">
+
+      <div class="stat-box">
+        <h1>49*</h1>
+        <p>Members</p>
+      </div>
+
+      <div class="stat-box">
+        <h1>24/7</h1>
+        <p>Drama Updates</p>
+      </div>
+
+      <div class="stat-box">
+        <h1>∞</h1>
+        <p>Cringe Energy</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONFESSIONS -->
+
+  <section id="confessions">
+
+    <h1 class="section-title">CONFESSIONS 😭</h1>
+
+    <div class="card-grid">
+      <div class="card">
+        <h2>Assembly Crush 👀</h2>
+        <p>
+          “There is a guy who is cute so handsome like wow he's from sectoin B but problem is i dont know his identity.”
+        </p>
+      <a href="https://www.instagram.com/reel/DYy8uyGtTrz/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="><p><b><i>Reel available click to see</i></b></p></a>
+      </div>
+
+      <div class="card">
+        <h2>Secret Crush on BSF</h2>
+        <p>
+          “So..i have a friend who is very cute. i have a secret crush on him.. prr usko apna boyfriend bnana is next to impossible because he doesn't like getting into relationship at all... and im his only girl bsf..and iam giving my 100%..”
+        </p>
+        <a href="https://www.instagram.com/reel/DY1EA_zvILd/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="><p><b><i>Reel available click to see</i></b></p></a>
+      </div>
+
+    </div>
+
+  </section>
+  <!-- GOSSIPS -->
+
+<section id="gossips">
+
+  <h1 class="section-title">GOSSIPS 🗣️</h1>
+
+  <div class="card-grid">
+<div class="card">
+        <h2>Anonymous Tea☕</h2>
+        <p>
+          “There is a boy from section B who likes a girl from section D.”
+        </p>
+      </div>
+    <div class="card">
+      <h2>Relationship Arc 💘</h2>
+      <p>
+        “Apparently two toppers of class 10 are dating.
+        This is literally a perfect example of daiting with marks.”
+      </p>
+    </div>
+    <div class="card">
+      <h2>Andha Pyarr</h2>
+      <p>
+        “Dekh hamari 11 C mein ek Banda hai *boy* and 11 B mein first shift se aayi Hui *girl1* dono ek dusre ko baby Shona cutie pie krke baat krte hein bade cringe hein bhnc# hn toh uss rhythm ko me janta hu uske saath kayi baar khelne bhi Gaya Hu aur abhi kuch din pehle kya hua ki *girl1* ne *boy* ka phone manga reels dekhne ke liye
+*boy* tension mein aa gaya..
+*girl1* ko shaq hogya fir ki kuch toh gadbad hai daya..
+Usne phone cheen liya… aur dekha *boy* ne apne best friend ka naam mtlb mera naam raju mistri save kiya hua tha 💀 me ka iski bhn ka chocolate chocooo...
+Chat kholi toh andar likha tha
+Bhai aaj pink hoodie wali ko propose karu kya? Ye usne mujhe text kara tha
+*girl1* ko gussa aa gaya usne wahi use gaali dena shuru kr dii teri bhen ko naman teri maa## dungi me lesbian hu aur etc etc
+*boy* bhaiya ki fat gyi wo panic mein bola ki 
+Woh tu hi thi teri hi baat kr rahe the..Tbhi me piche se aaya aur mujhe wo dikhi nhi ki iske saath hai wo building ke piche khadi thi mujhe laga ki ye phone pe baat kr raha tha kisi se mene chilla Diya ki 
+Areyy nahi bhai wo pink hoodie wali toh Section D mein *girl2* hai 😭😭 bohot gaaliyan padi hai iski mausi ko naman 😭💔💔”
+      </p>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- RAGEBAITS -->
+
+<section id="rage">
+
+  <h1 class="section-title">RAGEBAITS 🔥</h1>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <h2>Principal's Shop</h2>
+      <p>
+        “Hamare principal ke barber ki dukaan pta chl gai or naam bhi-latest news h.”
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- MEMBERS -->
+
+  <section id="members">
+
+    <h1 class="section-title">THE MEMBERS 🧃</h1>
+
+    <div class="members">
+
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>vnrx0.1</h3>
+        <span>Proud Member</span>
+      </div>
+
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>upset_sakix</h3>
+        <span>Proud Member</span>
+      </div>
+
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>ansh_yash_brothers</h3>
+        <span>Proud Member</span>
+      </div>
+            <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>vansh_thakur_09</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>flex.kunal0u</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>shutdown.hc</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>ng147632</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>roniii3100</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>yess.itkhushi</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>harshuuu._44</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>aditiya_singh.069</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>daccxxshabb</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>trc_krishna20</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>was.moksh13</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>__royal___king_67__</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>guruabhishek45</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>anshuu_xv</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>ishiii021</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>vansh_saini912</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>godsfavv.vihaan</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>_.coraline_.77</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>karan._.invincible</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>krishnachandravanshi350</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>aakash_choudharyy1</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>anshuman_2.7</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>rishabh_jr01</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>coldex>abhijeet.2728</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>yashh._47</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>yepImnischay_</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>fynsht_prithivi</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>saundarya.sharmaaa</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>nyxar_riaz</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>w_arinn.07</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>tanmaysingh._.01</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>venomffxoc</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>james83231</h3>
+        <span>Proud Member</span>
+      </div>
+       <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>divyanshu._.40</h3>
+        <span>Proud Member</span>
+      </div>
+       <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>nobita_is_here0409</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>tyagi_vansh47</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>khatti._.meethi._.toffee</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>fs.ishantt</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>bhaskar_kumar_bk18</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>sarthak_bhati123</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>ansh_16426</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>vz_yugal_00</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>laxsh.89</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>damnshewin</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>4rsh.glitch</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>notvaibhavv_99</h3>
+        <span>Proud Member</span>
+      </div>
+      <div class="member-card">
+        <img src="kvcc.jpeg">
+        <h3>Not In LIST??</h3>
+        <span>OR WANNA BE A MEMBER</span>
+        <P>Just FOLLOW the page and DM us!</P>
+        <a href="https://www.instagram.com/kvcringeclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><p>LINK TO FOLLOW PAGE</p></a>
+      </div>
+ 
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>KV_CRINGE_CLUB</h2>
+
+    <p>Kendriya Vidyalaya Kamla Nehru Nagar, Ghaziabad</p>
+
+    <p>“Built With TRUST.Running with GOSSIPS”</p>
+
+  </footer>
+
+  <!-- JS -->
+
+  <script>
+
+    let slides = document.querySelectorAll('.slide');
+    let index = 0;
+
+    function changeSlide(){
+
+      slides[index].classList.remove('active');
+
+      index++;
+
+      if(index >= slides.length){
+        index = 0;
+      }
+
+      slides[index].classList.add('active');
+    }
+
+    setInterval(changeSlide, 4000);
+
+  </script>
+
+</body>
+</html>
